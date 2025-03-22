@@ -26,7 +26,7 @@ const RoadmapGenerator: React.FC = () => {
     }
     setLoading(true);
     try {
-      const response = await axios.post("https://r-roadmap-generator.vercel.app/roadmap", {
+      const response = await axios.post("https://r-roadmap-generator-kk9t.vercel.app/roadmap", {
         project_title: projectTitle,
         project_description: projectDescription,
         start_date: startDate,
