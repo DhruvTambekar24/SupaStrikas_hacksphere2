@@ -28,8 +28,8 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, path: '/' },
     { id: 'learn', label: 'Learn', icon: BookOpen, path: '/learn' },
     { id: 'stake', label: 'Stake Tokens', icon: Coins, path: '/stake' },
-    { id: 'ai-tutor', label: 'AI Tutor', icon: Bot, path: '/ai-tutor' },
-    { id: 'achievements', label: 'Achievements', icon: Award, path: '/achievements' },
+    { id: 'ai-tutor', label: 'AI Tutor', icon: Bot, path: '/chatbot' },
+    { id: 'achievements', label: 'Roadmap', icon: Award, path: '/roadmap' },
     { id: 'settings', label: 'Settings', icon: Settings, path: '/settings' },
   ];
 
