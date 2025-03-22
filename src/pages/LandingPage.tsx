@@ -62,13 +62,13 @@ function LandingPage() {
         <div
           style={{
             position: "absolute",
-            top: "5%",
-            left: "7%",
+            top: "7%",
+            left: "10%",
             transform: "translate(-50%, -50%)",
             textAlign: "center",
           }}
         >
-          <img src={image} alt="Descriptive Text" style={{ width: "200px", height: "auto" }} />
+          <img src={image} alt="Descriptive Text" style={{ width: "250px", height: "auto" }} />
         </div>
 
         {/* welcome Text */}
@@ -82,20 +82,20 @@ function LandingPage() {
   }}
 >
   {/* Main Heading */}
-  <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500">
-    WELCOME TO <span className="text-blue-700">Gyansphere</span>
+  <h1 className="text-5xl font-extrabold w-fit text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500">
+    Welcome to <span className="text-blue-700 text-5xl tracking-tighter">GyaanSphere</span>
   </h1>
   </div>
   <div style={{
     position: "absolute",
-    top: "48%",
-    left: "15%",
+    top: "45%",
+    left: "18%",
     transform: "translate(-50%, -50%)",
     textAlign: "center",
   }}>
 
   {/* Subtext */}
-  <p className="mt-4 text-lg text-gray-800 text-left">
+  <p className=" text-xl text-gray-800 text-left">
     Revolutionizing Learning through <span className="font-bold text-purple-500">AI</span>, 
     <span className="font-bold text-blue-500"> Blockchain,</span><br/> and <span className="font-bold text-pink-500">exciting rewards</span>.
     <br />

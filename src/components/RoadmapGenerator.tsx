@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
 import "github-markdown-css"; // Import GitHub Markdown styles
+import Sidebar from "./Sidebar";
 
 const RoadmapGenerator: React.FC = () => {
   // Form state
@@ -26,7 +27,7 @@ const RoadmapGenerator: React.FC = () => {
     }
     setLoading(true);
     try {
-      const response = await axios.post("https://r-roadmap-generator.vercel.app/roadmap", {
+      const response = await axios.post("https://r-roadmap-generator-kk9t.vercel.app/roadmap", {
         project_title: projectTitle,
         project_description: projectDescription,
         start_date: startDate,
@@ -45,8 +46,11 @@ const RoadmapGenerator: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-3xl">
+    <div className="flex justify-between items-center">
+  
+      <Sidebar/>
+    <div className="flex flex-col justify-between items-center md:flex-row min-h-screen overflow-scroll   text-black">
+      <div className=" flex flex-col justify-center items-center p-4 mr-44  rounded-lg shadow-md w-full max-w-3xl drop-shadow-2xl border-2 border-black">
         <h1 className="text-3xl font-bold text-center mb-6">
           🚀 Roadmap Generator
         </h1>
@@ -153,12 +157,13 @@ const RoadmapGenerator: React.FC = () => {
         {roadmap && (
           <div className="mt-8">
             <h2 className="text-2xl font-semibold mb-4">Generated Roadmap</h2>
-            <div className="prose prose-sm max-w-none markdown-body">
+            <div className="prose prose-sm px-4 max-w-none markdown-body">
               <ReactMarkdown>{roadmap}</ReactMarkdown>
             </div>
           </div>
         )}
       </div>
+    </div>
     </div>
   );
 };

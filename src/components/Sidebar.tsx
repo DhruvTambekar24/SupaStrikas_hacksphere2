@@ -15,6 +15,7 @@ import Streak from "../components/Streak"
 interface SidebarProps {
   className?: string;
 }
+import image1 from "../assets/image1.png"
 
 const Sidebar: React.FC<SidebarProps> = ({ className }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -25,12 +26,10 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
   };
 
   const menuItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, path: '/' },
-    { id: 'learn', label: 'Learn', icon: BookOpen, path: '/learn' },
-    { id: 'stake', label: 'Stake Tokens', icon: Coins, path: '/stake' },
+    { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, path: '/dashboard' },
+    { id: 'summarizer', label: 'Video Summarizer', icon: Settings, path: '/summarize' },
     { id: 'ai-tutor', label: 'AI Tutor', icon: Bot, path: '/chatbot' },
     { id: 'achievements', label: 'Roadmap', icon: Award, path: '/roadmap' },
-    { id: 'settings', label: 'Settings', icon: Settings, path: '/settings' },
   ];
 
   return (
@@ -45,10 +44,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
         <div className="flex items-center justify-between p-4 border-b border-gray-200">
           {!isCollapsed && (
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center">
-                <span className="text-white font-medium text-sm">GS</span>
-              </div>
-              <h2 className="font-montserrat font-semibold text-lg">GyaanSphere</h2>
+             <img src={image1} alt="" className=''/>
             </div>
           )}
           <button 
@@ -87,11 +83,11 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
           )}>
             {!isCollapsed ? (
               <>
-                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm">
+                <div className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center shadow-sm">
                   <span className="text-purple-500 font-medium">JS</span>
                 </div>
                 <div>
-                  <p className="font-medium text-sm">John Smith</p>
+                  <p className="font-medium text-black text-sm">John Smith</p>
                   <p className="text-xs text-gray-500">Pro Plan</p>
                 </div>
               </>

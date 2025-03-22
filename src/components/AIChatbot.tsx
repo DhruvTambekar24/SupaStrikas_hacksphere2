@@ -44,7 +44,7 @@ const AIChatbox: React.FC<{ className?: string }> = ({ className }) => {
     try {
       // Call the deployed API endpoint
       const response = await axios.post<ChatAPIResponse>(
-        'https://r-roadmap-generator-rkj.vercel.app/chat',
+        'https://edith-alpha.vercel.app/chat',
         {
           user_message: userMsg.message,
           history: updatedHistory.map((chat) => ({

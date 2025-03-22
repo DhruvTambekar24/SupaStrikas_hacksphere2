@@ -149,8 +149,9 @@ const Streak = () => {
   }, [contract, account]);
 
   return (
-    <div className="flex flex-col items-center gap-4 mx-auto p-4 max-w-md border rounded shadow">
-      <h1 className="text-2xl font-bold">Streak Dashboard</h1>
+    <div className="flex flex-col items-center mt-24 gap-4 mx-auto p-4 max-w-md border rounded shadow text-black">
+      <h1 className='text-xl font-extrabold'><span className='text-yellow-500'>Stake</span> to <span className='text-green-500'>Learn</span> 🚀</h1>
+      <h1 className="text-xl font-bold text-purple-600">Streak Dashboard</h1>
 
       {loading && (
         <div className="flex items-center gap-2 text-blue-500">
