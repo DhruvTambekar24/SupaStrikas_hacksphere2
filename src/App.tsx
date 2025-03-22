@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Brain, BookOpen, Trophy, Compass } from 'lucide-react';
 import { AuthModal } from './components/AuthModal';
+import image from './assets/image.png';
+import Spline from '@splinetool/react-spline';
 
 function App() {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
@@ -43,32 +45,139 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 animate-gradient">
-      <div className="container mx-auto px-4 py-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto text-center"
+    <div
+    className="min-h-screen"
+    style={{ backgroundColor: "#C3D1FF" }}
+  >
+     
+
+   <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
+        {/* Spline component */}
+        <Spline
+          scene="https://prod.spline.design/RRrsATVg24EE3YwE/scene.splinecode"
+          style={{ width: "100%", height: "100%" }}
+        />
+
+        <div
+          style={{
+            position: "absolute",
+            top: "5%",
+            left: "7%",
+            transform: "translate(-50%, -50%)",
+            textAlign: "center",
+          }}
         >
-          <div className="flex justify-center mb-8">
-            <BookOpen size={64} className="text-white" />
-          </div>
-          <h1 className="text-5xl font-bold text-white mb-6">
-            GyaanSphere
-          </h1>
-          <p className="text-xl text-white/90 mb-8">
-            Revolutionizing Learning Through AI & Blockchain
-          </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setIsAuthModalOpen(true)}
-            className="bg-white text-primary-600 px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+          <img src={image} alt="Descriptive Text" style={{ width: "200px", height: "auto" }} />
+        </div>
+
+        {/* welcome Text */}
+        <div
+  style={{
+    position: "absolute",
+    top: "28%",
+    left: "22%",
+    transform: "translate(-50%, -50%)",
+    textAlign: "center",
+  }}
+>
+  {/* Main Heading */}
+  <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500">
+    WELCOME TO <span className="text-blue-700">Gyansphere</span>
+  </h1>
+  </div>
+  <div style={{
+    position: "absolute",
+    top: "45%",
+    left: "15%",
+    transform: "translate(-50%, -50%)",
+    textAlign: "center",
+  }}>
+
+  {/* Subtext */}
+  <p className="mt-4 text-lg text-gray-800 text-left">
+    Revolutionizing Learning through <span className="font-bold text-purple-500">AI</span>, 
+    <span className="font-bold text-blue-500"> Blockchain,</span><br/> and <span className="font-bold text-pink-500">exciting rewards</span>.
+    <br />
+
+  </p>
+</div>
+
+
+        {/* Overlay Text with Button */}
+        <div
+          style={{
+            position: "absolute",
+            top: "65%",
+            left: "10%",
+            transform: "translate(-50%, -50%)",
+            textAlign: "center",
+          }}
+        >
+          <button  onClick={() => setIsAuthModalOpen(true)}
+            style={{
+              background: "black",
+              color: "white",
+              padding: "0.8rem 1rem",
+              fontSize: "1.8rem",
+              fontWeight: "bold",
+              border: "none",
+              borderRadius: "30px",
+              cursor: "pointer",
+              transition: "all 0.3s ease-in-out",
+              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+            }}
+            onMouseEnter={(e) => {
+              const target = e.target as HTMLButtonElement;
+              target.style.background = "linear-gradient(90deg, #FC20FF, #A269FF)";
+              target.style.color = "white";
+              target.style.transform = "scale(1.1)";
+            }}
+            onMouseLeave={(e) => {
+              const target = e.target as HTMLButtonElement;
+              target.style.background = "black";
+              target.style.color = "white";
+              target.style.transform = "scale(1)";
+            }}
+            onMouseDown={(e) => {
+              const target = e.target as HTMLButtonElement;
+              target.style.transform = "scale(0.9)";
+              target.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.2)";
+            }}
+            onMouseUp={(e) => {
+              const target = e.target as HTMLButtonElement;
+              target.style.transform = "scale(1)";
+              target.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
+            }}
           >
-            Get Started
-          </motion.button>
-        </motion.div>
+            Get Started →
+          </button>
+        </div>
+
+        <div
+          style={{
+            position: "absolute",
+            top: "94.5%",
+            left: "95%",
+            transform: "translate(-50%, -50%)",
+            textAlign: "center",
+          }}
+        >
+          <p
+            style={{
+              background: "black",
+              color: "white",
+              fontSize: "0.7rem",
+              padding: "0.5rem",
+              borderRadius: "0px",
+              display: "inline-block",
+              width: "100px",
+            }}
+          >
+            Supa Strikas
+          </p>
+        </div>
+      </div>
+
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -104,7 +213,7 @@ function App() {
             </motion.div>
           ))}
         </motion.div>
-      </div>
+   
 
       <AuthModal
         isOpen={isAuthModalOpen}
