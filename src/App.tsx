@@ -5,6 +5,7 @@ import LandingPage from './pages/LandingPage';
 import ChatBot from './components/ChatBot';
 import RoadmapGenerator from './components/RoadmapGenerator';
 import SignUp from './pages/Signin';
+import Dashboard from './pages/Dashboard';
 
 interface ProtectedRouteProps {
   children: JSX.Element;
@@ -23,6 +24,8 @@ function App() {
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<SignUp />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+
       <Route path="/chatbot" element={
        
           <ChatBot />
