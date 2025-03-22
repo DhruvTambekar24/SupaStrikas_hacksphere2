@@ -4,6 +4,7 @@ import { useFirebase } from './firebase';
 import LandingPage from './pages/LandingPage';
 import ChatBot from './components/ChatBot';
 import RoadmapGenerator from './components/RoadmapGenerator';
+import Summarize from './components/Summarize';
 import SignUp from './pages/Signin';
 
 interface ProtectedRouteProps {
@@ -28,11 +29,16 @@ function App() {
           <ChatBot />
    
       } />
-      <Route path="/roadmap" element={
+      <Route path="/summarize" element={
     
-          <RoadmapGenerator />
+          <Summarize/>
    
       } />
+      <Route path="/roadmap" element={
+    
+    <RoadmapGenerator />
+
+} />
     </Routes>
   );
 }
