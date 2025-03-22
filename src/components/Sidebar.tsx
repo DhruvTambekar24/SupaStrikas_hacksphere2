@@ -11,7 +11,7 @@ import {
   X
 } from 'lucide-react';
 import { cn } from '../lib/utils';
-
+import Streak from "../components/Streak"
 interface SidebarProps {
   className?: string;
 }
@@ -78,8 +78,8 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
               </Link>
             ))}
           </nav>
+        <Streak/>
         </div>
-        
         <div className="p-4 border-t border-gray-200">
           <div className={cn(
             "flex items-center gap-3 p-3 rounded-lg bg-gray-100",
@@ -102,6 +102,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
             )}
           </div>
         </div>
+        
       </div>
     </div>
   );
