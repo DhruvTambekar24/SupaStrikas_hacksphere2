@@ -4,11 +4,12 @@ import { Brain, BookOpen, Trophy, Compass } from 'lucide-react';
 import { AuthModal } from '../components/AuthModal';
 import image from '../assets/image.png';
 import Spline from '@splinetool/react-spline';
+import { useNavigate } from 'react-router-dom';
 
 function LandingPage() {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const navigate=useNavigate();
   if (isLoggedIn) {
     return (
       <div className="min-h-screen bg-gray-50">
@@ -113,7 +114,9 @@ function LandingPage() {
             textAlign: "center",
           }}
         >
-          <button  onClick={() => setIsAuthModalOpen(true)}
+          <button  onClick={() => {
+            navigate("/login")
+          }}
             style={{
               background: "black",
               color: "white",

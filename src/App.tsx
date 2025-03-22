@@ -42,6 +42,13 @@ function App() {
     <RoadmapGenerator />
 
 } />
+
+<Route path="/Dashboard" element={
+    
+    <Dashboard/>
+
+} />
+
     </Routes>
   );
 }

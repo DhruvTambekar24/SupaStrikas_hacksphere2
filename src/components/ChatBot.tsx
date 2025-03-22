@@ -40,7 +40,7 @@ const ChatBot: React.FC = () => {
   // Generate answer using FastAPI backend
   const generateAnswer = async (text: string): Promise<void> => {
     try {
-      const response = await axios.post('http://127.0.0.1:8000/chat', {
+      const response = await axios.post('https://r-voice-ai.vercel.app/chat', {
         user_message: text,
         history: history,
       });

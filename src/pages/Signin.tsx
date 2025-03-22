@@ -70,7 +70,7 @@ const SignUp: React.FC = () => {
             queryUsername || user.displayName || user.email || "User";
           await initializeUserProgress(firestore, user.uid, finalUsername);
           setInitialized(true);
-          navigate("/dashboard");
+        //   navigate("/dashboard");
         } catch (err: any) {
           setError(err.message);
         }
@@ -90,6 +90,7 @@ const SignUp: React.FC = () => {
       setError(err.message);
     } finally {
       setLoading(false);
+      navigate("/Dashboard");
     }
   };
 
@@ -104,7 +105,7 @@ const SignUp: React.FC = () => {
       setError(err.message);
     } finally {
       setLoading(false);
-      navigate("/dashboard");
+     navigate("/Dashboard");
     }
   };
 
@@ -120,6 +121,7 @@ const SignUp: React.FC = () => {
       setError(err.message);
     } finally {
       setLoading(false);
+      navigate("/Dashboard");
     }
   };
 
