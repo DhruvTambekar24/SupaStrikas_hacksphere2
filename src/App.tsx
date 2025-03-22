@@ -74,7 +74,7 @@ function App() {
         <div
   style={{
     position: "absolute",
-    top: "28%",
+    top: "35%",
     left: "22%",
     transform: "translate(-50%, -50%)",
     textAlign: "center",
@@ -87,7 +87,7 @@ function App() {
   </div>
   <div style={{
     position: "absolute",
-    top: "45%",
+    top: "48%",
     left: "15%",
     transform: "translate(-50%, -50%)",
     textAlign: "center",
@@ -178,26 +178,39 @@ function App() {
         </div>
       </div>
 
+ <br/>
+  <br/>
+  <br/>
+  <motion.h1
+  initial={{ opacity: 0, y: 40 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, delay: 0.2 }}
+  className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 text-gray-600 mx-20 max-w-lg "
+>
+  FEATURES
+</motion.h1>
+  
 
+<div className="mx-14 mb-20">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8"
         >
           {[
             {
-              icon: <Brain className="w-12 h-12 mb-4 text-primary-100" />,
+              icon: <Brain className="w-12 h-12 mb-4 text-black" />,
               title: "AI-Powered Learning",
               description: "Personalized learning paths adapted to your unique style"
             },
             {
-              icon: <Trophy className="w-12 h-12 mb-4 text-primary-100" />,
+              icon: <Trophy className="w-12 h-12 mb-4 text-black" />,
               title: "Learn & Earn",
               description: "Earn rewards as you progress through your learning journey"
             },
             {
-              icon: <Compass className="w-12 h-12 mb-4 text-primary-100" />,
+              icon: <Compass className="w-12 h-12 mb-4 text-black" />,
               title: "Career Guidance",
               description: "AI-driven career roadmaps tailored to your goals"
             }
@@ -205,21 +218,39 @@ function App() {
             <motion.div
               key={index}
               whileHover={{ y: -5 }}
-              className="bg-white/10 backdrop-blur-lg rounded-xl p-6 text-center"
+              className="bg-white/30 backdrop-blur-lg rounded-xl p-6 text-center"
             >
               <div className="flex justify-center">{feature.icon}</div>
-              <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
-              <p className="text-white/80">{feature.description}</p>
+              <h3 className="text-xl font-semibold text-black mb-2">{feature.title}</h3>
+              <p className="text-black/80">{feature.description}</p>
             </motion.div>
           ))}
         </motion.div>
    
-
+        </div>
       <AuthModal
         isOpen={isAuthModalOpen}
         onClose={() => setIsAuthModalOpen(false)}
       />
+     <div className="bg-white/30 backdrop-blur-lg text-black py-2 px-14">
+  <div className="flex flex-col md:flex-row justify-between items-center">
+    {/* Left Section */}
+    <div className="mb-4 md:mb-0">
+      <h2 className="text-lg font-bold">GyaanSphere</h2>
+      <p className="text-sm">Empowering your learning journey</p>
     </div>
+
+
+
+    {/* Right Section */}
+    <div className="mt-4 md:mt-0">
+      <p className="text-sm">&copy; 2025 GyaanSphere. All rights reserved.</p>
+    </div>
+  </div>
+</div>
+
+    </div>
+    
   );
 }
 
