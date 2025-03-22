@@ -1,48 +1,84 @@
 import React, { useState } from 'react';
 import { Bot, Send, User } from 'lucide-react';
 import { cn } from '../lib/utils';
+import axios from 'axios';
 
-interface AIChatboxProps {
-  className?: string;
+interface Chat {
+  id: number;
+  sender: 'ai' | 'user';
+  message: string;
+  timestamp: string;
 }
 
-const AIChatbox: React.FC<AIChatboxProps> = ({ className }) => {
+interface ChatAPIResponse {
+  bot_message: string;
+  history: { role: string; message: string }[];
+}
+
+const AIChatbox: React.FC<{ className?: string }> = ({ className }) => {
   const [message, setMessage] = useState('');
-  const [chatHistory, setChatHistory] = useState([
-    { id: 1, sender: 'ai', message: 'Hello! I\'m your AI tutor. How can I help you with your learning today?', timestamp: '1:30 PM' },
+  const [chatHistory, setChatHistory] = useState<Chat[]>([
+    {
+      id: 1,
+      sender: 'ai',
+      message: "Hello! I'm EDITH, your witty AI tutor. Ask me anything!",
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+    },
   ]);
 
-  const handleSendMessage = (e: React.FormEvent) => {
+  const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!message.trim()) return;
 
-    // Add user message to chat
-    const userMessage = {
+    // Append user's message to history
+    const userMsg: Chat = {
       id: chatHistory.length + 1,
       sender: 'user',
       message: message.trim(),
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
     };
-
-    setChatHistory([...chatHistory, userMessage]);
+    const updatedHistory = [...chatHistory, userMsg];
+    setChatHistory(updatedHistory);
     setMessage('');
 
-    // Simulate AI response after a short delay
-    setTimeout(() => {
-      const aiMessage = {
-        id: chatHistory.length + 2,
+    try {
+      // Call the deployed API endpoint
+      const response = await axios.post<ChatAPIResponse>(
+        'https://r-roadmap-generator-rkj.vercel.app/chat',
+        {
+          user_message: userMsg.message,
+          history: updatedHistory.map((chat) => ({
+            role: chat.sender,
+            message: chat.message,
+          })),
+        }
+      );
+
+      const botMsgText = response.data.bot_message;
+      const aiMsg: Chat = {
+        id: updatedHistory.length + 1,
         sender: 'ai',
-        message: "I understand you're curious about advanced algorithms. Let's break down the concept of dynamic programming...",
+        message: botMsgText,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       };
-      setChatHistory((prev) => [...prev, aiMessage]);
-    }, 1000);
+
+      setChatHistory([...updatedHistory, aiMsg]);
+    } catch (error: any) {
+      console.error('Error generating AI response:', error);
+      const errorMsg: Chat = {
+        id: updatedHistory.length + 1,
+        sender: 'ai',
+        message: "Sorry, I couldn't process your request.",
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      };
+      setChatHistory([...updatedHistory, errorMsg]);
+    }
   };
 
   return (
     <div className={cn('bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow flex flex-col h-full', className)}>
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-semibold">AI Tutor</h2>
+        <h2 className="text-xl font-semibold">AI Tutor (EDITH)</h2>
         <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
           Online
         </span>
@@ -62,7 +98,6 @@ const AIChatbox: React.FC<AIChatboxProps> = ({ className }) => {
                 <Bot className="h-4 w-4 text-white" />
               </div>
             )}
-
             <div
               className={cn(
                 'rounded-2xl px-4 py-3 max-w-[80%]',
@@ -74,7 +109,6 @@ const AIChatbox: React.FC<AIChatboxProps> = ({ className }) => {
               <p className="text-sm">{chat.message}</p>
               <p className="text-xs text-gray-500 mt-1">{chat.timestamp}</p>
             </div>
-
             {chat.sender === 'user' && (
               <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 border border-blue-300">
                 <User className="h-4 w-4 text-blue-600" />
